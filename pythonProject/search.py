@@ -1,38 +1,19 @@
-import os
+import utils
 
+# Definição dos diretórios
 dir1 = "backup_Apple/S_9AE48BF4-AC26-473B-9C73-1EA9CB5F4D2A"
 dir2 = "backup_Apple/S_C676EA9A-DB38-4063-808C-3DA50C3AF90E"
-dir0 = "Home/Documents/applebackup/search-path"
 
-file_catalog = {}
+num = int(input("Qual diretório você deseja abrir? 1 ou 2.\n"))
 
-num = int(input("Which directory do you want to open? 1 or 2.\n"))
-
+# Usa uma estrutura match-case para selecionar o diretório
 match num:
     case 1:
-        print("ok")
-        contend = os.listdir(dir1)
-        for caminho, diretorios, arquivos in os.walk(dir1):
-            print(caminho)
-            print(diretorios)
-            print("\n", arquivos)
-        for element in contend:
-            element_path = os.path.join(dir1, element)
-            if os.path.isfile(element_path):
-                print("Arquivo:", element)
-                print("Local:", element_path)
-                print("\n")
-            elif os.path.isdir(element_path):
-                print("Diretorio: ", element)
-
+        print("Abrindo o diretório 1...")
+        utils.listar_conteudo(dir1)
     case 2:
-        print("ok2")
-        contend = os.listdir(dir2)
-        for element in contend:
-            element_path = os.path.join(dir2, element)
-            if os.path.isfile(element_path):
-                print("Arquivo: ", element)
-            elif os.path.isdir(element_path):
-                print("Diretorio: ", element)
+        print("Abrindo o diretório 2...")
+        utils.listar_conteudo(dir2)
     case _:
+        print("Opção inválida. Saindo do programa.")
         exit(1)
